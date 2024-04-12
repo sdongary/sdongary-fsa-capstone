@@ -19,17 +19,18 @@ const createTables = async () => {
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
     address VARCHAR(255),
-    payment_info VARCHAR(16),
+    payment_type VARCHAR(16),
     is_admin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id)
   );
   CREATE TABLE products(
     id UUID DEFAULT gen_random_uuid(),
-    name VARCHAR(20) UNIQUE NOT NULL,
+    name VARCHAR(200) UNIQUE NOT NULL,
     inventory INTEGER DEFAULT 0,
     price NUMERIC NOT NULL,
     description VARCHAR(255),
     category VARCHAR(25),
+    image VARCHAR(255),
     PRIMARY KEY (id)
   );
   CREATE TABLE carted_products(
@@ -44,20 +45,20 @@ const createTables = async () => {
   await client.query(SQL);
 };
 
-const createUser = async ({ first_name, last_name, email, password, address, payment_info, is_admin }) => {
+const createUser = async ({ first_name, last_name, email, password, address, payment_type, is_admin }) => {
   const SQL = `
-    INSERT INTO users(id, first_name, last_name, email, password, address, payment_info, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
+    INSERT INTO users(id, first_name, last_name, email, password, address, payment_type, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *
   `;
-  const response = await client.query(SQL, [uuid.v4(), first_name, last_name, email, await bcrypt.hash(password, 5), address, payment_info, is_admin]);
+  const response = await client.query(SQL, [uuid.v4(), first_name, last_name, email, await bcrypt.hash(password, 5), address, payment_type, is_admin]);
   console.log("Create User");
   return response.rows[0];
 };
 
-const createProduct = async ({ name, price, description, category, inventory }) => {
+const createProduct = async ({ name, price, description, category, inventory, image }) => {
   const SQL = `
-    INSERT INTO products(id, name, price, description, category, inventory) VALUES($1, $2, $3, $4, $5, $6) RETURNING *
+    INSERT INTO products(id, name, price, description, category, inventory, image) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
   `;
-  const response = await client.query(SQL, [uuid.v4(), name, price, description, category, inventory]);
+  const response = await client.query(SQL, [uuid.v4(), name, price, description, category, inventory, image]);
   console.log("CreatedProduct");
   return response.rows[0];
 };

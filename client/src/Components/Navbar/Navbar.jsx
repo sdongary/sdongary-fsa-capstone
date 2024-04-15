@@ -15,8 +15,8 @@ const Navbar = () => {
         <p>SHOPPER</p>
       </div>
       <ul className="nav-menu">
-        <li>Electronics</li>
-        <li >Shoes & Apparel</li>
+        <li onClick={() => {setMenu("Electronic")} }>Electronics{menu === "Electronic"? <hr/>:<></>}</li>
+        <li onClick={() => {setMenu("Shoes & Apparel")} }>Shoes & Apparel</li>
         <li>Health & Beauty</li>
         <li>Home Decor</li>
         <li>Furniture</li>

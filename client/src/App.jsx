@@ -11,13 +11,14 @@ import Product from './Pages/Product';
 import Footer from './Components/Footer/Footer';
 
 
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div>
-      
       <Navbar/>
+      
       <Routes>
 
           <Route path='/' element={<Shop/>}/> 
@@ -38,6 +39,7 @@ function App() {
 
       </Routes> 
       <Footer/>
+
       
     </div>
   )

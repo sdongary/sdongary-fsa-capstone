@@ -1,7 +1,7 @@
 import './Footer.css'
 import footer_logo from '../Assets/logo_big.png'
 import instagram_icon from '../Assets/instagram_icon.png'
-import x_icon from '../Assets/x_icon.png'
+import twitterx_icon from '../Assets/twitterx_icon.png'
 import facebook_icon from '../Assets/facebook_icon.png'
 import snapchat_icon from '../Assets/snapchat_icon.png'
 
@@ -16,8 +16,8 @@ const Footer = () => {
         <li>Company</li>
         <li>Products</li>
         <li>Offices</li>
-        <li>About</li>
-        <li>Contact Us</li>
+        <li>About Us</li>
+        <li>Contact</li>
       </ul>
 
       <div className='footer-social-icon'>
@@ -25,7 +25,7 @@ const Footer = () => {
           <img src={instagram_icon} alt="" />
         </div>
         <div className='footer-icons-container'>
-          <img src={x_icon} alt="" />
+          <img src={twitterx_icon} alt="" />
         </div>
         <div className='footer-icons-container'>
           <img src={facebook_icon} alt="" />

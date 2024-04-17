@@ -1,49 +1,44 @@
-const {createUser, createProduct, createCartedProducts} = require('./db');
+const {createUser, createProduct, createCartedProducts} = require('./seed');
 
 const fakeData = async () => {
   try{
     const users = await Promise.all([
       createUser({
-        first_name:'Joe', 
-        last_name:'Rogan', 
-        email: 'jrogan@gmail.com', 
-        password: 'jr_pop', 
+        username: 'userOne',
+        email: 'userOne@gmail.com', 
+        password: 'onepwd', 
         address: 'Boston', 
         payment_info: 'Debit Card',
         is_admin: true
       }),
       createUser({
-        first_name:'Shane', 
-        last_name:'Gillis', 
-        email: 'sgillis@gmail.com', 
-        password: 'sg_pop', 
+        username: 'userTwo',
+        email: 'userTwo@gmail.com', 
+        password: 'twopwd',  
         address: 'Philadelphia', 
         payment_info: 'Credit Card',
         is_admin: false
       }),
       createUser({
-        first_name:'Mark', 
-        last_name:'Normand', 
-        email: 'mnormand@gmail.com', 
-        password: 'mn_pop', 
+        username: 'userThree',
+        email: 'userThree@gmail.com', 
+        password: 'threepwd',  
         address: 'New Orleans', 
         payment_info: 'Debit Card',
         is_admin: false
       }),
       createUser({
-        first_name:'Ari', 
-        last_name:'Shaffir', 
-        email: 'ashaffir@gmail.com', 
-        password: 'as_pop', 
+        username: 'userFour',
+        email: 'userFour@gmail.com', 
+        password: 'onefour',  
         address: 'New York', 
         payment_info: 'Gift Card',
         is_admin: false
       }),
       createUser({
-        first_name:'Jaime', 
-        last_name:'Vernon', 
-        email: 'jvernon@gmail.com', 
-        password: 'jv_pop', 
+        username: 'userFive',
+        email: 'userFive@gmail.com', 
+        password: 'fivepwd',  
         address: 'California', 
         payment_info: 'Credit Card',
         is_admin: false
@@ -236,10 +231,10 @@ const fakeData = async () => {
     ]);
     
     const cartedProducts = await Promise.all([
-      createCartedProducts({ user_id: users[0].id, product_id: products[0].id, qty: 1 }),
-      createCartedProducts({ user_id: users[1].id, product_id: products[1].id, qty: 5 }),
-      createCartedProducts({ user_id: users[2].id, product_id: products[2].id, qty: 3 }),
-      createCartedProducts({ user_id: users[3].id, product_id: products[3].id, qty: 2 })
+      createCartedProducts({ user_id: users[0].id, product_id: products[0].id, quantity: 1 }),
+      createCartedProducts({ user_id: users[1].id, product_id: products[1].id, quantity: 5 }),
+      createCartedProducts({ user_id: users[2].id, product_id: products[2].id, quantity: 3 }),
+      createCartedProducts({ user_id: users[3].id, product_id: products[3].id, quantity: 2 })
     ]);
       console.log(cartedProducts);
 

@@ -14,22 +14,23 @@ const createUser = async ({ username, email, password, address, payment_type, is
   return response.rows[0];
 };
 
-const fetchUsers = async () => {
+const fetchUser = async (id) => {
   const SQL = `
-  SELECT * FROM users;
+  SELECT id, username, email, password, adresss, payment_type, is_admin FROM users
+  WHERE id=$1
   `;
-  const response = await client.query(SQL);
+  const response = await client.query(SQL,[id]);
   return response.rows;
 };
 
-const updateUser = async ({ id, username, email, password, address, payment_type, is_admin }) => {
+const updateUser = async ({  username, email, password, address, payment_type, is_admin }) => {
   const SQL = `
   UPDATE users
   SET username=$2, email=$3, password=$4, address=$5, payment_type=$6, is_admin=$7
   WHERE id=$1
   RETURNING *
   `
-  const response = await client.query(SQL, [id, username, email, password, address, payment_type, is_admin]);
+  const response = await client.query(SQL, [ username, email, password, address, payment_type, is_admin]);
   return response.rows[0];
 };
 
@@ -42,7 +43,7 @@ const deleteUser = async ({ id }) => {
 
 module.exports = {
   createUser,
-  fetchUsers,
+  fetchUser,
   updateUser,
   deleteUser
 };

@@ -1,26 +1,26 @@
+const express = require("express");
+
 const { 
   fetchProducts,
   fetchSingleProduct,
   createProduct,
   updateProduct,
   deleteProduct
-} = require('./DB/seed');
+} = require('../DB/products.js');
 
 const { 
 isAdmin, isLoggedIn
-} = require ('./DB/auth.ja')
+} = require ('../DB/auth.js')
 
-const express = require('express');
-const path = require('path');
-const app = express();
-app.use(express.json());
+// const express = require('express');
+// const path = require('path');
+// const app = express();
+// app.use(express.json());
 
-
-
-
+const router = express.Router();
 
 //Fetch Products
-app.get('/api/products', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try{
     res.send(await fetchProducts());
     } 
@@ -30,7 +30,7 @@ app.get('/api/products', async (req, res, next) => {
 });
 
 //Fetch Single Product
-app.get('/api/product/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     res.send(await fetchSingleProduct({id: req.params.id}));
   } catch (ex) {
@@ -39,7 +39,7 @@ app.get('/api/product/:id', async (req, res, next) => {
 });
 
 //Create Product(isAdmin)
-app.post('/api/products', isAdmin, isLoggedIn, async(req, res, next)=> {
+router.post('/', isAdmin, isLoggedIn, async(req, res, next)=> {
   try {
         res.status(201).send(await createProduct(req.body));
   }
@@ -49,7 +49,7 @@ app.post('/api/products', isAdmin, isLoggedIn, async(req, res, next)=> {
 });
 
 // Update Product(isAdmin)
-app.put('/api/product/:id', isLoggedIn, isAdmin, async(req, res, next)=> {
+router.put('/:id', isLoggedIn, isAdmin, async(req, res, next)=> {
   try {
        res.status(201).send(await updateProduct({...req.body, id: req.params.id}));
   }
@@ -59,7 +59,7 @@ app.put('/api/product/:id', isLoggedIn, isAdmin, async(req, res, next)=> {
 });
 
 // Delete Product(isAdmin)
-app.delete('/api/products/:id', isLoggedIn, isAdmin, async (req, res, next) => {
+router.delete('/:id', isLoggedIn, isAdmin, async (req, res, next) => {
   try{
     res.status(204).send(await deleteProduct({id:req.params.id}));
   } 
@@ -67,3 +67,5 @@ app.delete('/api/products/:id', isLoggedIn, isAdmin, async (req, res, next) => {
     next(ex);
   }
 });
+
+module.exports = router;

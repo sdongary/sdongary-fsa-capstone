@@ -12,6 +12,15 @@ const createProduct = async ({ name, price, description, category, inventory, im
   console.log("CreatedProduct");
   return response.rows[0];
 };
+const createCategorizedProducts = async (category) => {
+  const SQL = `
+      SELECT *
+      FROM products
+      WHERE category=$1
+    `;
+  const response = await client.query(SQL, [category]);
+  return response.rows;
+};
 
 const fetchProducts = async () => {
   const SQL = `
@@ -29,14 +38,14 @@ const fetchSingleProduct = async ({ id }) => {
   return result.rows[0];
 };
 
-const updateProduct = async ({ id, name, price, description, category, inventory}) => {
+const updateProduct = async ({ name, price, description, category, inventory, image}) => {
   const SQL = `
   UPDATE products
-  SET name=$2, price=$3, description=$4, category=$5, inventory=$6
-  WHERE id=$1
+  SET name=$1, price=$2, description=$3, category=$4, inventory=$5, image=$6
+  WHERE id=$7
   RETURNING *
   `;
-  const response = await client.query(SQL, [name, price, description, category, inventory, id]);
+  const response = await client.query(SQL, [name, price, description, category, inventory, image]);
   return response.rows[0];
 }
 
@@ -49,6 +58,7 @@ const deleteProduct = async ({ id }) => {
 
 module.exports = {
   createProduct,
+  createCategorizedProducts,
   fetchProducts,
   fetchSingleProduct,
   updateProduct,

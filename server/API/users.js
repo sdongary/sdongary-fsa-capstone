@@ -1,22 +1,26 @@
+const express = require("express");
+
 const { 
   createUser,   
-  fetchUsers, 
+  fetchUser, 
   updateUser, 
   deleteUser
- } = require('./DB.seed.js');
+ } = require('../DB/users.js');
   
 const {
   isLoggedIn, 
   findUserWithToken, 
-  authenticate } = require('./DB/auth.js');
+  authenticate } = require('../DB/auth.js');
 
-const express = require('express');
-const path = require('path');
-const app = express();
-app.use(express.json());
+// const express = require('express');
+// const path = require('path');
+// const app = express();
+// app.use(express.json());
+
+const router = express.Router();
 
 //Login
-app.post('/api/auth/login', async(req, res, next)=> {
+router.post('/login', async(req, res, next)=> {
   try {
     res.send(await authenticate(req.body));
   }
@@ -26,7 +30,7 @@ app.post('/api/auth/login', async(req, res, next)=> {
 });
 
 //Register
-app.post('/api/auth/register', async(req, res, next)=> {
+router.post('/register', async(req, res, next)=> {
   try {
     res.send(await createUser(req.body));
   }
@@ -36,7 +40,7 @@ app.post('/api/auth/register', async(req, res, next)=> {
 });
 
 // isLoggedIn
-app.get('/api/auth/me', isLoggedIn, async(req, res, next)=> {
+router.get('/me', isLoggedIn, async(req, res, next)=> {
   try {
    res.send(await findUserWithToken(req.headers.authorization));   
   }
@@ -45,10 +49,10 @@ app.get('/api/auth/me', isLoggedIn, async(req, res, next)=> {
   }
 });
 
-//Fetch User Info
-app.get('/api/users',isLoggedIn, async(req, res, next)=> {
+//Fetch User 
+router.get('/',isLoggedIn, async(req, res, next)=> {
   try {
-    res.send(await fetchUsers());
+    res.send(await fetchUser());
   }
   catch(ex){
     next(ex);
@@ -56,7 +60,7 @@ app.get('/api/users',isLoggedIn, async(req, res, next)=> {
 });
 
 // Update User
-app.put('/api/user/:id', isLoggedIn, async (req, res, next) => {
+router.put('/:id', isLoggedIn, async (req, res, next) => {
   try {
     res.status(201).send(await updateUser({...req.body, id: req.params.id}));
   } catch (ex) {
@@ -65,10 +69,12 @@ app.put('/api/user/:id', isLoggedIn, async (req, res, next) => {
 });
 
 // Delete User
-app.delete('/api/user/:id', isLoggedIn, async (req, res, next) => {
+router.delete('/:id', isLoggedIn, async (req, res, next) => {
   try {
     res.status(204).send(await deleteUser({id: req.params.id}));
   } catch (ex) {
     next(ex);
   }
 });
+
+module.exports = router;

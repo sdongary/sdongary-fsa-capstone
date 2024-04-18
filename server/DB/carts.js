@@ -20,7 +20,8 @@ const fetchCart = async ({ userId }) => {
   return response.rows;
 };
 
-const createCartedProducts = async ({ cart_id, product_id, quantity }) => {
+//Add Product to the cart
+const addCartProduct = async ({ cart_id, product_id, quantity }) => {
   const SQL = `
     INSERT INTO carted_products(id, cart_id, product_id, quantity) VALUES($1, $2, $3, $4) RETURNING *
   `;
@@ -28,17 +29,29 @@ const createCartedProducts = async ({ cart_id, product_id, quantity }) => {
   return response.rows[0];
 };
 
-// Changes
+// Fetch products that are in the cart(User LoggedIn)
 const fetchCartedProducts = async ({ cart_id }) => {
   const SQL = `
-  SELECT * FROM carted_products WHERE cart_id = $1;
+  SELECT produscts.id, products.name, products.price, carted_products.quantity FROM carted_products
+  INNER JOIN products
+  ON products.id = carted_products.product_id
+  WHERE carted_products.cart_id = $1
   `;
   const response = await client.query(SQL, [cart_id]);
   return response.rows;
 }
+//Delete Products from the cart
+const deleteCartProduct = async ({ cart_id, product_id }) => {
+  const SQL = `
+  DELETE FROM carted_products 
+  WHERE cart_id=$1 AND product_id=$2
+  RETURNING *
+  `;
+  await client.query(SQL, [cart_id, product_id]);
+}
 
-// Changes
-const updateCartedProducts = async ({ id, cart_id, product_id, quantity }) => {
+// Update existing products in the cart
+const updateAddCartProduct = async ({ cart_id, product_id, quantity }) => {
   const SQL = `
   UPDATE carted_products
   SET product_id=$2 AND cart_id=$3, quantity=$4
@@ -48,19 +61,30 @@ const updateCartedProducts = async ({ id, cart_id, product_id, quantity }) => {
   const response = await client.query(SQL, [cart_id, product_id, quantity]);
   return response.rows[0];
 }
-
-const deleteCartedProduct = async ({ id }) => {
+//Delete all products from cart upon checkout
+const deleteCartedProducts = async ({ cart_id }) => {
   const SQL = `
-  DELETE FROM carted_products WHERE id=$1
+  DELETE FROM carted_products WHERE cart_id=$1
   `;
-  await client.query(SQL, [id]);
+  await client.query(SQL, [cart_id]);
 }
 
-modulw.exports = {
+const fetchCarts = async () => {
+  const SQL = `
+  SELECT * 
+  FROM carts
+  `;
+  const response = await client.query(SQL);
+  return response.rows;
+}
+
+module.exports = {
   createCart,
-  createCartedProducts,
+  addCartProduct,
   fetchCart,
   fetchCartedProducts,
-  updateCartedProducts,
-  deleteCartedProduct
+  updateAddCartProduct,
+  deleteCartProduct,
+  deleteCartedProducts,
+  fetchCarts
 }

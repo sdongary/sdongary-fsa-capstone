@@ -21,7 +21,7 @@ const { isLoggedIn } = require('../DB.auth.js');
 
 const router = express.Router(); 
 
-//Fetch Carted Products
+//Fetch Carted Products (isLoggedIn)
 router.get('/api/users/:cartId/cartedProducts', async(req, res, next)=> {
   try {
        res.send(await fetchCartedProducts(req.params.id));
@@ -31,7 +31,7 @@ router.get('/api/users/:cartId/cartedProducts', async(req, res, next)=> {
   }
 });
 
-//Fetch Cart (LoggedIn user)
+//Fetch Cart (isLoggedIn)
 router.get('/', isLoggedIn , async(req, res, next)=> {
   try{
     res.send(await fetchCart(req.params.id));
@@ -41,20 +41,24 @@ router.get('/', isLoggedIn , async(req, res, next)=> {
   }
 });
 
-//Fetch All Carted Products(isAdmin)
-// router.get('/api/cartedProducts', isAdmin, isLoggedIn, async (req, res, next) => {
-//   try {
-//     res.send(await fetchAllCartedProducts());
-//   }
-//   catch (ex) {
-//     next(ex);
-//   }
-// });
+// Add product to the cart
+router.post('/', isAdmin, isLoggedIn, async (req, res, next) => {
+  try {
+    res.status(201).send(await addCartProduct({
+      cart_id : req.cart.id,
+      product_id: req.body.product_id,
+      quantity: req.body.quantity
+    }))
+  }
+  catch (ex) {
+    next(ex);
+  }
+});
 
 // Update Carted Products
 router.put('/api/user/:cartId/product/:id/cartedProducts', isLoggedIn, async (req, res, next) => {
   try{
-    res.status(201).send(await updateCartedProducts({quantity: req.body.quantity, cart_id:req.params.cartId, product_id:req.params.product_id}));
+    res.status(201).send(await updateAddCartProduct({quantity: req.body.quantity, cart_id:req.params.cartId, product_id:req.params.product_id}));
   } 
   catch(ex){
     next(ex);
@@ -74,7 +78,7 @@ router.post('/api/users/:cartId/cartedProducts', isLoggedIn, async (req, res, ne
 // Delete Carted Products
 router.delete('/:productid', isLoggedIn, async (req, res, next) => {
   try {
-    await deleteCartedProduct({ cart_id: req.params.cartId, product_id: req.params.id });
+    await deleteCartProduct({ cart_id: req.params.cartId, product_id: req.params.id });
     res.sendStatus(204);
   } catch (ex) {
     next(ex);

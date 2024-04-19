@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.delete("/", isLoggedIn, async (req, res, next) => {
     try {
-      res.status(204).send(await checkout(req.user.id))
+      res.status(204).send(await checkout(req.cart.id))
     } catch (ex) {
       next(ex);
     }

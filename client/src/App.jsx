@@ -10,6 +10,7 @@ import LoginSignup from './Pages/LoginSignup';
 import {Products} from './Pages/Products';
 import Footer from './Components/Footer/Footer';
 import { Register } from './Pages/Register';
+import { Account } from './Pages/Account';
 import { SingleProduct } from './Pages/SingleProduct';
 
 

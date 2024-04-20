@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { API_URL } from "../main"
-import { response } from "express";
+
 
 
 export function Products(){
@@ -10,7 +10,7 @@ export function Products(){
 useEffect(() => {
   const fetchProducts = async () => {
     try {
-      const reesponse = await fetch(`${API_URL}/api/products/`);
+      const response = await fetch(`${API_URL}/api/products/`);
       const result = await response.json();
       setProducts(result)
     } catch (error){

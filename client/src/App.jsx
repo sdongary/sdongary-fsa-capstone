@@ -7,7 +7,7 @@ import Shop from './Pages/Shop';
 import Category from './Pages/Category';
 import Cart from './Pages/Cart';
 import LoginSignup from './Pages/LoginSignup';
-import Product from './Pages/Product';
+import Product from './Pages/Products';
 import Footer from './Components/Footer/Footer';
 
 

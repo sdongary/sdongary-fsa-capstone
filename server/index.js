@@ -1,5 +1,4 @@
-
-// const express = require('express');
+ const express = require('express');
 // const { register } = require('module');
 // 
 
@@ -30,10 +29,10 @@ app.use('/assets', express.static(path.join(__dirname, '../client/dist/assets'))
 // });
 
 app.use(cors());
-app.use('/API/users, usersRouter');
-app.use('/API/products, productssRouter');
-app.use('/API/cart, cartsRouter');
-app.use('/API/checkout, checkoutRouter');
+app.use('/api/users', usersRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/cart', cartsRouter);
+app.use('/api/checkout', checkoutRouter);
 
 const init = async()=> {
   const port = process.env.PORT || 3000;

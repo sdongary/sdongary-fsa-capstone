@@ -1,7 +1,7 @@
 const {createUser} = require('./users.js');
 const { createProduct} = require('./products.js');
 const { addCartProduct } = require('./carts.js');
-const { client } = requrie('../client.js')
+const { client } = require('../client.js')
 
 const fakeData = async () => {
   try{
@@ -232,14 +232,16 @@ const fakeData = async () => {
         price: 35
        }),
     ]);
+
+    // const createCarts = 
     
-    const cartedProducts = await Promise.all([
-      addCartProduct({ user_id: users[0].id, product_id: products[0].id, quantity: 1 }),
-      addCartProduct({ user_id: users[1].id, product_id: products[1].id, quantity: 5 }),
-      addCartProduct({ user_id: users[2].id, product_id: products[2].id, quantity: 3 }),
-      addCartProduct({ user_id: users[3].id, product_id: products[3].id, quantity: 2 })
-    ]);
-      console.log(cartedProducts);
+    // const cartedProducts = await Promise.all([
+    //   addCartProduct({ user_id: users[0].id, product_id: products[0].id, quantity: 1 }),
+    //   addCartProduct({ user_id: users[1].id, product_id: products[1].id, quantity: 5 }),
+    //   addCartProduct({ user_id: users[2].id, product_id: products[2].id, quantity: 3 }),
+    //   addCartProduct({ user_id: users[3].id, product_id: products[3].id, quantity: 2 })
+    // ]);
+    //   console.log(cartedProducts);
 
     return {users, products , addCartProduct};
   } catch(err){

@@ -1,8 +1,8 @@
 const express = require("express");
 const {
     checkout
-} =require ("../db/checkout.js")
-const { isLoggedIn } = require("../db/auth.js")
+} =require ("../DB/checkout.js")
+const { isLoggedIn } = require("../DB/auth.js")
 
 const router = express.Router();
 

@@ -1,10 +1,12 @@
+const { client } = require('../client.js')
 
 const createTables = async () => {
   const SQL = `
   DROP TABLE IF EXISTS carted_products;
-  DROP TABLE IF EXISTS products;  
+  DROP TABLE IF EXISTS products;
+  DROP TABLE IF EXISTS carts;  
   DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS orders;
+  
 
   CREATE TABLE users(
     id UUID DEFAULT gen_random_uuid(),
@@ -27,8 +29,9 @@ const createTables = async () => {
     PRIMARY KEY (id)
   );  
   CREATE TABLE carts(
-    id UUID UUID DEFAULT gen_random_uuid(),
+    id UUID DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES users(id),
+    PRIMARY KEY (id)
   );
   CREATE TABLE carted_products(
     id UUID DEFAULT gen_random_uuid(), 

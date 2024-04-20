@@ -12,7 +12,7 @@ const {
 
 } = require('../DB/carts.js');
 
-const { isLoggedIn } = require('../DB.auth.js');
+const { isLoggedIn, isAdmin } = require('../DB/auth.js');
 
 // const express = require('express');
 // const path = require('path');
@@ -84,3 +84,5 @@ router.delete('/:productid', isLoggedIn, async (req, res, next) => {
     next(ex);
   }
 });
+
+module.exports = router;

@@ -15,6 +15,7 @@ const createTables = async () => {
     id UUID DEFAULT gen_random_uuid(),
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
+    username VARCHAR(100),
     address VARCHAR(255),
     payment_type VARCHAR(16),
     is_admin BOOLEAN DEFAULT FALSE,

@@ -2,7 +2,6 @@ const { client } = require('../client.js');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
 
 const createCart = async ({ user_id }) => {
   const SQL = `
@@ -12,7 +11,7 @@ const createCart = async ({ user_id }) => {
   return response.rows[0];
 };
 
-const fetchCart = async ({ userId }) => {
+const fetchCart = async ( userId ) => {
   const SQL = `
   SELECT * FROM carts WHERE user_id = $1;
   `;
@@ -32,7 +31,7 @@ const addCartProduct = async ({ cart_id, product_id, quantity }) => {
 // Fetch products that are in the cart(User LoggedIn)
 const fetchCartedProducts = async ({ cart_id }) => {
   const SQL = `
-  SELECT produscts.id, products.name, products.price, carted_products.quantity FROM carted_products
+  SELECT products.id, products.name, products.price, carted_products.quantity FROM carted_products
   INNER JOIN products
   ON products.id = carted_products.product_id
   WHERE carted_products.cart_id = $1
@@ -47,15 +46,16 @@ const deleteCartProduct = async ({ cart_id, product_id }) => {
   WHERE cart_id=$1 AND product_id=$2
   RETURNING *
   `;
-  await client.query(SQL, [cart_id, product_id]);
+  const response = await client.query(SQL, [cart_id, product_id]);
+  return response.rows[0];
 }
 
-// Update existing products in the cart
+// Update existing products in the cart (increase quantity/decrease quantity)
 const updateAddCartProduct = async ({ cart_id, product_id, quantity }) => {
   const SQL = `
   UPDATE carted_products
-  SET product_id=$2 AND cart_id=$3, quantity=$4
-  WHERE id=$1
+  SET quantity=$1 + quantity
+  WHERE product_id=$2 AND cart_id=$3
   RETURNING *
   `;
   const response = await client.query(SQL, [cart_id, product_id, quantity]);

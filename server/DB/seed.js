@@ -1,7 +1,7 @@
 const { client } = require('../client.js');
-const { fetchCart, addCartProduct, createCart } = require('./carts.js');
+const { fetchCart, addCartProduct, createCart, fetchCarts } = require('./carts.js');
 const { createProduct, fetchProducts, createCategory, fecthCategories } = require('./products.js');
-const { fetchUser, createUser } = require('./users.js');
+const { fetchAllUsers, createUser } = require('./users.js');
 
 const createTables = async () => {
   const SQL = `
@@ -278,7 +278,7 @@ const seedTable = async () => {
       }),
   ]);
 
-  const users = await fetchUser();
+  const users = await fetchAllUsers();
   console.log("List of Users: ", users);
 
   const category = await fecthCategories();
@@ -295,7 +295,7 @@ const seedTable = async () => {
     createCart({ user_id: userFive.id}),
   ]);
 
-  const carts = await fetchCart();
+  const carts = await fetchCarts();
   console.log("Carts: ", carts);
   
   const cartProducts = await Promise.all([

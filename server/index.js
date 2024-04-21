@@ -1,10 +1,8 @@
- const express = require('express');
-// const { register } = require('module');
-// 
+const express = require('express');
 
 const { client } = require('./client.js');
-const {fakeData} = require('./DB/data.js');
-const {createTables} = require('./DB/seed.js');
+
+const {createTables, seedTable} = require('./DB/seed.js');
 
 const cors = require('cors');
 
@@ -31,19 +29,21 @@ app.use('/assets', express.static(path.join(__dirname, '../client/dist/assets'))
 app.use(cors());
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/cart', cartsRouter);
+app.use('/api/mycart', cartsRouter);
 app.use('/api/checkout', checkoutRouter);
 
 const init = async()=> {
-  const port = process.env.PORT || 3000;
+  
   await client.connect();
   console.log('connected to database');
 
   await createTables();
   console.log('tables created');
 
- await fakeData();
+  await seedTable();
+  console.log('data seeded');
 
+  const port = process.env.PORT || 3000;
   app.listen(port, ()=> console.log(`listening on port ${port}`));
 };
 

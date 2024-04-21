@@ -2,7 +2,6 @@ const { client } = require('../client.js');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
 const JWT = process.env.JWT || 'shhh';
 
 const authenticate = async ({ email, password }) => {
@@ -48,7 +47,7 @@ const findUserWithToken = async (token) => {
 
 const isLoggedIn = async(req, res, next)=> {
   try {
-    req.user = await findUserWithToken(req.headers.authorization);
+    req.user = await findUserWithToken(req.headers.authorization.split('')[1]);
     next();
   }
   catch(ex){

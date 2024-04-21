@@ -1,6 +1,6 @@
 const { client } = require('../client.js');
 const { fetchCart, addCartProduct, createCart } = require('./carts.js');
-const { createProduct, fetchProducts } = require('./products.js');
+const { createProduct, fetchProducts, createCategory, fecthCategories } = require('./products.js');
 const { fetchUser, createUser } = require('./users.js');
 
 const createTables = async () => {

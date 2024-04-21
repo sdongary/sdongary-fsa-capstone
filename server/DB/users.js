@@ -5,11 +5,11 @@ const jwt = require('jsonwebtoken');
 const { response } = require('express');
 const JWT = process.env.JWT || 'shhh';
 
-const createUser = async ({ username, email, password, address, payment_type, is_admin }) => {
+const createUser = async ({ email, password, address, payment_type, is_admin }) => {
   const SQL = `
-    INSERT INTO users(id, username, email, password, address, payment_type, is_admin) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
+    INSERT INTO users(id, email, password, address, payment_type, is_admin) VALUES($1, $2, $3, $4, $5, $6) RETURNING *
   `;
-  const response = await client.query(SQL, [uuid.v4(), username, email, await bcrypt.hash(password, 5), address, payment_type, is_admin]);
+  const response = await client.query(SQL, [uuid.v4(), email, await bcrypt.hash(password, 5), address, payment_type, is_admin]);
   console.log("Create User");
   return response.rows[0];
 };

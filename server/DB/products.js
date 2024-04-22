@@ -41,12 +41,12 @@ const fetchSingleProduct = async ( id ) => {
 
 const createCategory = async ({ name }) => {
   const SQL =`
-  INSERT INTO categories(id, name) VALUES($1) RETURNING *
+  INSERT INTO categories(id, name) VALUES($1, $2) RETURNING *
   `
   const response = await client.query(SQL, [uuid.v4(), name]);
 };
 
-const createProduct = async ({ id, name, price, description, prod_category, inventory, image }) => {
+const createProduct = async ({ name, price, description, prod_category, inventory, image }) => {
   const SQL = `
     INSERT INTO products(id, name, price, description, prod_category, inventory, image) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *
   `;

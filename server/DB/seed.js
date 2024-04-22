@@ -54,7 +54,7 @@ const createTables = async () => {
 
 const seedTable = async () => {
   const [ Electronics, Clothing, PersonalCare, HomeDecor, Furniture ] = await Promise.all([
-    createCategory({ name: 'Electronic'}),
+    createCategory({ name: 'Electronics'}),
     createCategory({ name: 'Clothing'}),
     createCategory({ name: 'PersonalCare'}),
     createCategory({ name: 'HomeDecor'}),
@@ -329,8 +329,6 @@ const seedTable = async () => {
   console.log("ProductsInCart: ", cartProducts);
 
 }
-
-
 
 module.exports = {
   createTables,

@@ -64,7 +64,7 @@ router.post('/', isAdmin, isLoggedIn, async(req, res, next)=> {
         price: req.body.price,
         description: req.body.description,
         inventory: req.body.inventory,
-        prod_category: req.body.prod_category,
+        prod_catergory: req.body.prod_catergory,
       })
     );
   } catch (ex) {
@@ -92,7 +92,7 @@ router.put('/:productId', isLoggedIn, isAdmin, async(req, res, next)=> {
         price: req.body.price,
         description: req.body.description,
         inventory: req.body.inventory,
-        prod_category: req.body.prod_category,
+        prod_catergory: req.body.prod_catergory,
       })
     );
   } catch (ex) {

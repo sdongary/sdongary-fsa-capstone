@@ -16,15 +16,24 @@ const fetchCart = async ( userId ) => {
   SELECT * FROM carts WHERE user_id = $1;
   `;
   const response = await client.query(SQL, [userId]);
-  return response.rows;
+  if(!response){
+    throw new Error("This user does not have an existing cart")
+  }
+  return response.rows[response.rows.length - 1];
 };
 
-//Add Product to the cart
-const addCartProduct = async ({ cart_id, product_id, quantity }) => {
+const createCartedProduct = async ({ cart_id, product_id, quantity }) => {
   const SQL = `
-    INSERT INTO carted_products(id, cart_id, product_id, quantity) VALUES($1, $2, $3, $4) RETURNING *
-  `;
-  const response = await client.query(SQL, [uuid.v4(), cart_id, product_id, quantity]);
+        INSERT INTO cart_products(id, cart_id, product_id, quantity)
+        VALUES($1, $2, $3, $4)
+        RETURNING *
+      `;
+  const response = await client.query(SQL, [
+    uuid.v4(),
+    cart_id,
+    product_id,
+    quantity,
+  ]);
   return response.rows[0];
 };
 
@@ -39,6 +48,17 @@ const fetchCartedProducts = async ({ cart_id }) => {
   const response = await client.query(SQL, [cart_id]);
   return response.rows;
 }
+
+//Add Product to the cart
+const addCartProduct = async ({ cart_id, product_id, quantity }) => {
+  const SQL = `
+    INSERT INTO carted_products(id, cart_id, product_id, quantity) VALUES($1, $2, $3, $4) 
+    ON CONFLICT (cart_id, product_id)
+    DO UPDATE SET quantity = carted_products + $4 RETURNING *
+  `;
+  const response = await client.query(SQL, [uuid.v4(), cart_id, product_id, quantity]);
+  return response.rows[0];
+};
 //Delete Products from the cart
 const deleteCartProduct = async ({ cart_id, product_id }) => {
   const SQL = `
@@ -50,17 +70,30 @@ const deleteCartProduct = async ({ cart_id, product_id }) => {
   return response.rows[0];
 }
 
-// Update existing products in the cart (increase quantity/decrease quantity)
-const updateAddCartProduct = async ({ cart_id, product_id, quantity }) => {
+
+const increaseCartQuantity = async ({ quantity, cart_id, product_id }) => {
   const SQL = `
-  UPDATE carted_products
-  SET quantity=$1 + quantity
-  WHERE product_id=$2 AND cart_id=$3
-  RETURNING *
-  `;
-  const response = await client.query(SQL, [cart_id, product_id, quantity]);
+      UPDATE carted_products
+      SET
+        quantity = carted_products.quantity + $1
+      WHERE cart_id=$2 AND product_id=$3
+      RETURNING *;
+    `;
+  const response = await client.query(SQL, [quantity, cart_id, product_id]);
   return response.rows[0];
-}
+};
+
+const decreaseCartQuantity = async ({ quantity, cart_id, product_id }) => {
+  const SQL = `
+      UPDATE carted_products
+      SET
+        quantity = carted_products.quantity - $1
+      WHERE cart_id=$2 AND product_id=$3
+      RETURNING *;
+    `;
+  const response = await client.query(SQL, [quantity, cart_id, product_id]);
+  return response.rows[0];
+};
 //Delete all products from cart upon checkout
 const deleteCartedProducts = async ({ cart_id }) => {
   const SQL = `
@@ -80,10 +113,12 @@ const fetchCarts = async () => {
 
 module.exports = {
   createCart,
+  createCartedProduct,
   addCartProduct,
   fetchCart,
   fetchCartedProducts,
-  updateAddCartProduct,
+  increaseCartQuantity,
+  decreaseCartQuantity,
   deleteCartProduct,
   deleteCartedProducts,
   fetchCarts

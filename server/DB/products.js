@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 //All Categories
 
-const fecthCategories = async () => {
+const fetchCategories = async () => {
   const SQL =`
   SELECT * FROM categories
   `;
@@ -31,7 +31,7 @@ const fetchProducts = async () => {
   return response.rows;
 }
 
-const fetchSingleProduct = async ({ id }) => {
+const fetchSingleProduct = async ( id ) => {
   const SQL = `
   SELECT * FROM products WHERE id=$1
   `;
@@ -73,7 +73,7 @@ const deleteProduct = async (id) => {
 }
 
 module.exports = {
-  fecthCategories,
+  fetchCategories,
   fetchCategorizedProducts,
   fetchProducts,
   fetchSingleProduct,

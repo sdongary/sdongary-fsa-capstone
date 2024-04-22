@@ -27,7 +27,7 @@ app.use('/assets', express.static(path.join(__dirname, '../client/dist/assets'))
 // });
 
 app.use(cors());
-app.use('/api/users', usersRouter);
+app.use('/api/auth', usersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/mycart', cartsRouter);
 app.use('/api/checkout', checkoutRouter);

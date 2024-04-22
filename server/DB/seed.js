@@ -1,6 +1,6 @@
 const { client } = require('../client.js');
-const { fetchCart, addCartProduct, createCart, fetchCarts } = require('./carts.js');
-const { createProduct, fetchProducts, createCategory, fecthCategories } = require('./products.js');
+const { addCartProduct, createCart, fetchCarts } = require('./carts.js');
+const { createProduct, fetchProducts, createCategory, fetchCategories } = require('./products.js');
 const { fetchAllUsers, createUser } = require('./users.js');
 
 const createTables = async () => {
@@ -75,7 +75,7 @@ const seedTable = async () => {
      createProduct({
       name: "Insignia Smart TV",
       description: "INSIGNIA 32-inch Class F20 Series Smart HD 720p Fire TV with Alexa Voice Remote (NS-32F201NA23, 2022 Model)",          
-      category: "Electronics",
+      prod_category: "Electronics",
       inventory: 25,
       image: "",
       price: 130
@@ -83,7 +83,7 @@ const seedTable = async () => {
      createProduct({
       name: "Samsung Smart Phone",
       description: "SAMSUNG Galaxy S24 Cell Phone, 128GB AI Smartphone, Unlocked Android, 50MP Camera, Fastest Processor, Long Battery Life, US Version, 2024, Onyx Black, SM-S921UZKAXAA)",          
-      category: "Electronics",
+      prod_category: "Electronics",
       inventory: 50,
       image: "",
       price: 800
@@ -91,7 +91,7 @@ const seedTable = async () => {
      createProduct({
       name: "Bose Headphones",
       description: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones with Spatial Audio, Over-the-Ear Headphones with Mic, Up to 24 Hours of Battery Life, Black",          
-      category: "Electronics",
+      prod_category: "Electronics",
       inventory: 40,
       image: "",
       price: 430
@@ -99,7 +99,7 @@ const seedTable = async () => {
      createProduct({
       name: "Hp Laptop",
       description: "HP 17 Inch Laptop Computer, 17.3 FHD Business Laptop, Intel Core i3-N305(8-Core), 32GB RAM, 1TB SSD, Intel UHD Graphics, Fingerprint, WiFi 6, Thin and Light Laptop, Win 11 Home, with Stand",                   
-      category: "Electronics",
+      prod_category: "Electronics",
       inventory: 15,
       image: "",
       price: 680
@@ -107,16 +107,16 @@ const seedTable = async () => {
      createProduct({
       name: "Apple Watch",
       description: "Apple Watch Series 9 [GPS 45mm] Smartwatch with Midnight Aluminum Case with Midnight Sport Band S/M. Fitness Tracker, ECG Apps, Always-On Retina Display, Water Resistant",          
-      category: "Electronics",
+      prod_category: "Electronics",
       inventory: 45,
       image: "",
       price: 350
      }),
-     // Shoes and Apparel
+     // Clothing
      createProduct({
       name: "Levi's Men's Jacket",
       description: "Levi's Men's Washed Cotton Hooded Military Jacket (Regular & Big & Tall Sizes)",          
-      category: "Shoes and Apparel",
+      prod_category: "Clothing",
       inventory: 45,
       image: "",
       price: 72
@@ -124,7 +124,7 @@ const seedTable = async () => {
      createProduct({
       name: "Wrangler Jeans",
       description: "Wrangler Authentics Men's Regular Fit Comfort Flex Waist Jean",          
-      category: "Shoes and Apparel",
+      prod_category: "Clothing",
       inventory: 100,
       image: "",
       price: 35
@@ -132,7 +132,7 @@ const seedTable = async () => {
      createProduct({
       name: "Hey Dude Shoes",
       description: "Hey Dude Mens Wally L Stretch Shoes",          
-      category: "Shoes and Apparel",
+      prod_category: "Clothing",
       inventory: 35,
       image: "",
       price: 60
@@ -140,7 +140,7 @@ const seedTable = async () => {
      createProduct({
       name: "Levi's Women's Jeans",
       description: "Levi's Women's Low Pro Jeans",          
-      category: "Shoes and Apparel",
+      prod_category: "Clothing",
       inventory: 30,
       image: "",
       price: 75
@@ -148,16 +148,16 @@ const seedTable = async () => {
      createProduct({
       name: "Crocs",
       description: "Crocs Womens Brooklyn Low Wedges, Platform Sandals",          
-      category: "Shoes and Apparel",
+      prod_category: "Clothing",
       inventory: 20,
       image: "",
       price: 50
      }),
-     // Health & Beauty
+     // PersonalCare
      createProduct({
        name: "Olaplex Shampoo",
        description: "Olaplex No. 4 Bond Maintenance Shampoo",          
-       category: "Health & Beauty",
+       prod_category: "PersonalCare",
        inventory: 100,
        image: "",
        price: 30
@@ -165,7 +165,7 @@ const seedTable = async () => {
      createProduct({
        name: "Paulas Choice Exfoliant",
        description: "Paulas Choice--SKIN PERFECTING 2% BHA Liquid Salicylic Acid Exfoliant--Facial Exfoliant for Blackheads, Enlarged Pores, Wrinkles & Fine Lines, 4 oz Bottle",          
-       category: "Health & Beauty",
+       prod_category: "PersonalCare",
        inventory: 80,
        image: "",
        price: 35
@@ -173,7 +173,7 @@ const seedTable = async () => {
      createProduct({
        name: "Dr. Squatch Men's Bar Soap",
        description: "Dr. Squatch Men's Bar Soap Gift Set (10 Bars) – Men's Natural Bar Soap - Birchwood Breeze, Fresh Falls, Wood Barrel Bourbon, Coconut Castaway, Cedar Citrus, Bay Rum Soap, and more",          
-       category: "Health & Beauty",
+       prod_category: "PersonalCare",
        inventory: 75,
        image: "",
        price: 63
@@ -181,7 +181,7 @@ const seedTable = async () => {
      createProduct({
        name: "Old Spice Deodorant",
        description: "Old Spice Antiperspirant Deodorant for Men, Harbor Scent, 48 Hr Odor Protection, 2.6 oz (Pack of 3)",          
-       category: "Health & Beauty",
+       prod_category: "PersonalCare",
        inventory: 60,
        image: "",
        price: 25
@@ -189,16 +189,16 @@ const seedTable = async () => {
      createProduct({
        name: "Clinique Sunscreen",
        description: "Clinique SPF 50 Mineral Sunscreen Fluid For Face",          
-       category: "Health & Beauty",
+       prod_category: "PersonalCare",
        inventory: 90,
        image: "",
        price: 35
       }),
-      // Home Decor 
+      // HomeDecor 
       createProduct({
        name: "Sweetcrispy Arched Mirror",
        description: "Sweetcrispy Arched Full Length Mirror 64x21 Full Body Mirror Floor Mirror Standing Hanging or Leaning Wall, Large Arch Wall Mirror with Stand Aluminum Alloy Thin Frame",          
-       category: "Home Decor",
+       prod_category: "HomeDecor",
        inventory: 20,
        image: "",
        price: 50
@@ -206,7 +206,7 @@ const seedTable = async () => {
       createProduct({
        name: "Jonathan Y Rug",
        description: "JONATHAN Y MOH101B-8 Moroccan Hype Boho Vintage Diamond 8 ft. x 10 ft. Area-Rug, Bohemian, Southwestern, Casual, Transitional, Pet Friendly, Non Shedding, Stain Resistant, Easy-Cleaning, Cream/Gray",
-       category: "Home Decor",
+       prod_category: "HomeDecor",
        inventory: 10,
        image: "",
        price: 100
@@ -214,7 +214,7 @@ const seedTable = async () => {
       createProduct({
        name: "InSimSea Frame",
        description: "InSimSea Framed Vintage Landscape Canvas Wall Art | Wild Field Oil Painting Prints | Cottagecore Bedroom Bathroom Office Decor 24x36inch",          
-       category: "Home Decor",
+       prod_category: "HomeDecor",
        inventory: 20,
        image: "",
        price: 65
@@ -222,7 +222,7 @@ const seedTable = async () => {
       createProduct({
        name: "Kamjuntar Glass Bud Vase Set",
        description: "Glass Bud Vase Set of 22, Small Vases for Flowers, Clear Centerpieces, Mini in Bulk Rustic Wedding Decorations, Vintage Look Home Table Flower Decor",          
-       category: "Home Decor",
+       prod_category: "HomeDecor",
        inventory: 15,
        image: "",
        price: 40
@@ -230,7 +230,7 @@ const seedTable = async () => {
       createProduct({
        name: "Kohler Candle",
        description: "Sprig by Kohler Recharge Aromatherapy Candle with Bergamot and Lemongrass, 100% Natural Soy-Coconut Wax, Uplifting and Invigorating Scent, Gift for Holidays, 8 oz",          
-       category: "Home Decor",
+       prod_category: "HomeDecor",
        inventory: 50,
        image: "",
        price: 38
@@ -239,7 +239,7 @@ const seedTable = async () => {
       createProduct({
        name: "Yaheetech Recliner Chair",
        description: "Yaheetech Modern Fabric Recliner Chair Sofa Adjustable Single Sofa with Thicker Seat Cushion and Backrest for Living Room Home Theater, Beige",          
-       category: "Furniture",
+       prod_category: "Furniture",
        inventory: 20,
        image: "",
        price: 70
@@ -247,7 +247,7 @@ const seedTable = async () => {
       createProduct({
        name: "Homall Bar Stools",
        description: "Homall Bar Stools Modern PU Leather Adjustable Swivel Barstools, Armless Hydraulic Kitchen Counter Bar Stool Synthetic Leather Extra Height Square Island Barstool with Back Set of 2(Black)",          
-       category: "Furniture",
+       prod_category: "Furniture",
        inventory: 25,
        image: "",
        price: 75
@@ -255,7 +255,7 @@ const seedTable = async () => {
       createProduct({
        name: "HPWLYO Dresser",
        description: "9 Drawer Dresser with LED Light, Tall Fabric Chest of Drawers for Closet, Storage Tower with 3 Shelves, Wide Drawer Organizer Cabinet with Power Outlets for Bedroom, Living Room (Rustic Brown)",          
-       category: "Furniture",
+       prod_category: "Furniture",
        inventory: 10,
        image: "",
        price: 90
@@ -263,7 +263,7 @@ const seedTable = async () => {
       createProduct({
        name: "Wlive Coffee Table",
        description: "WLIVE Wood Lift Top Coffee Table with Hidden Compartment and Adjustable Storage Shelf, Lift Tabletop Dining Table for Home Living Room, Office, Rustic Oak",          
-       category: "Furniture",
+       prod_category: "Furniture",
        inventory: 35,
        image: "",
        price: 90
@@ -271,7 +271,7 @@ const seedTable = async () => {
       createProduct({
        name: "BestOffice Chair",
        description: "Home Office Chair Ergonomic Desk Chair Mesh Computer Chair with Lumbar Support Armrest Executive Rolling Swivel Adjustable Mid Back Task Chair for Women Adults, Black",          
-       category: "Furniture",
+       prod_category: "Furniture",
        inventory: 35,
        image: "",
        price: 35
@@ -281,8 +281,8 @@ const seedTable = async () => {
   const users = await fetchAllUsers();
   console.log("List of Users: ", users);
 
-  const category = await fecthCategories();
-  console.log("List of Categories: ", category);
+  const prod_category = await fetchCategories();
+  console.log("List of Categories: ", prod_category);
 
   const products = await fetchProducts();
   console.log("List of Products: ",products);

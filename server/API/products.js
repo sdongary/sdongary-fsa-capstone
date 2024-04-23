@@ -27,15 +27,6 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-//Fetch Categories
-router.get('/', async (req, res, next) => {
-  try{
-    res.send(await fetchCategories())
-  } catch (ex) {
-    next(ex);
-  }
-})
-
 //Fetch Single Product
 router.get('/:productId', async (req, res, next) => {
   try {
@@ -44,15 +35,6 @@ router.get('/:productId', async (req, res, next) => {
     next(ex);
   }
 });
-
-//Fetch Categorized Products
-router.get('/:categoryName', async (req, res, next) => {
-  try{
-    res.send(await fetchCategorizedProducts(req.param.categoryName))
-  } catch (ex) {
-    next(ex);
-  }
-})
 
 //Create Product(isAdmin)
 router.post('/', isAdmin, isLoggedIn, async(req, res, next)=> {
@@ -68,16 +50,6 @@ router.post('/', isAdmin, isLoggedIn, async(req, res, next)=> {
       })
     );
   } catch (ex) {
-    next(ex);
-  }
-});
-
-//Create Category(isAdmin)
-router.post('/', isAdmin, isLoggedIn, async(req, res, next)=> {
-  try {
-        res.status(201).send(await createCategory(req.body));
-  }
-  catch(ex){
     next(ex);
   }
 });

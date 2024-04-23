@@ -11,6 +11,7 @@ export default function Categories(){
     const fetchCategories = async () => {
       const response = await fetch(`${API_URL}/categories`);
       const result = await response.json();
+      console.log(result);
       setCategories(result);
     }
     fetchCategories();

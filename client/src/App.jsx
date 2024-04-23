@@ -1,54 +1,84 @@
 import { useState } from 'react'
 import './App.css'
-import './Components/Navbar/Navbar';
-import Navbar from './Components/Navbar/Navbar';
-import { Routes, Route } from 'react-router-dom';
-import Shop from './Pages/Shop';
-import Category from './Pages/Category';
-import Cart from './Pages/Cart';
-import LoginSignup from './Pages/LoginSignup';
-import {Products} from './Pages/Products';
 import Footer from './Components/Footer/Footer';
-import { Register } from './Pages/Register';
-import { Account } from './Pages/Account';
-import { SingleProduct } from './Pages/SingleProduct';
+// import Navbar from './Components/Navbar/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import Navigation from "./Components/Navigation/Navigation";
+import Home from "./Components/Home/Home";
+import Account from "./Components/Account/Account";
+import Register from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
+import Products from "./Components/Products/Products";
+import SingleProduct from "./Components/SingleProduct/SingleProduct";
+import SingleCategory from "./Components/SingleCategory/SingleCategory";
+import MyCart from "./Components/MyCart/MyCart";
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
+import logo from "./Components/Assets/logo.png"
+
 
 
 
 function App() {
-  const [token, setToken] = useState(0)
+  const [token, setToken] = useState(null)
+  const [user, setUser] = useState(null);
   
   return (
-    <div>
-      <Navbar/>
-      
-      <Routes>
-
-      <Route path="/" element={<Products/>}/> 
+    <>
+    
+    <h1 className="logo">
+      <img
+      src={logo}
+      alt="ShopersStop logo" />
+      ShoppersStop
+    </h1>
+    <div id="container">
+      <Navigation token={token} />
+      <div id="main section">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/account"
+            element={<Account token={token} setToken={setToken} />}
+          />
+          <Route
+            path="/register"
+            element={
+              <Register
+                user={user}
+                setUser={setUser}
+                token={token}
+                setToken={setToken}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Login
+                user={user}
+                setUser={setUser}
+                token={token}
+                setToken={setToken}
+              />
+            }
+          />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/products" element={<Products />} />
+          <Route
+            path="/products/:id"
+            element={<SingleProduct token={token} />}
+          />
+          <Route path="/categories/:name" element={<SingleCategory />} />
+          <Route path="/myCart" element={<MyCart token={token} />} />
           
-          <Route path='/electronics' element={<Category category="Electronics"/>}/> 
-          <Route path='/shoes & apparel' element={<Category category="Shoes & Apparel"/>}/> 
-          <Route path='/health & beauty' element={<Category category="Health & Beauty"/>}/> 
-          <Route path='/home decor' element={<Category category="Home Decor"/>}/> 
-          <Route path='/furniture' element={<Category category="Furniture"/>}/> 
-
           
-          <Route path="/product" element={<Products/>}/>          
-          <Route path=':productId' element={<SingleProduct token={token}/>}/>
-          
-          <Route path='/register' element={<Register token={token} setToken={setToken}/>}/>
-          <Route path='/login' element={<LoginSignup token={token} setToken={setToken}/>}/>
-          <Route path='/account' element={<Account token={token} setToken={setToken}/>}/>        
-          <Route path='/cart' element={<Cart token={token} setToken={setToken}/>}/> 
-
-          
-
-      </Routes> 
-      <Footer/>
-
-      
+        </Routes>
+        
+        <Footer />
+      </div>
     </div>
-  )
+  </>
+);
 }
 
 export default App

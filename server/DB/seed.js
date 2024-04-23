@@ -2,6 +2,32 @@ const { client } = require('../client.js');
 const { addCartProduct, createCart, fetchCarts } = require('./carts.js');
 const { createProduct, fetchProducts, createCategory, fetchCategories } = require('./products.js');
 const { fetchAllUsers, createUser } = require('./users.js');
+import tv from "./Components/Assets/tv.jpg"
+import phone from "./Components/Assets/phone.jpg"
+import headphones from "./Components/Assets/headphones.jpg"
+import laptop from "./Components/Assets/laptop.jpg"
+import appleWatch from "./Components/Assets/appleWatch.jpg"
+import MensJacket from "./Components/Assets/MensJacket.jpg"
+import MensJeans from "./Components/Assets/MensJeans.jpg"
+import HDShoes from "./Components/Assets/HDShoes.jpg"
+import WomensJeans from "./Components/Assets/WomensJeans.jpg"
+import Crocs from "./Components/Assets/Crocs.jpg"
+import Shampoo from "./Components/Assets/Shampoo.jpg"
+import PCExfoliant from "./Components/Assets/PCExfoliant.jpg"
+import DrSquatchSoap from "./Components/Assets/DrSquatchSoap.jpg"
+import OldSpice from "./Components/Assets/OldSpice.jpg"
+import Sunscreen from "./Components/Assets/Sunscreen.jpg"
+import ArchedMirror from "./Components/Assets/ArchedMirror.jpg"
+import Rug from "./Components/Assets/Rug.jpg"
+import FrameArt from "./Components/Assets/FrameArt.jpg"
+import VaseSet from "./Components/Assets/VaseSet.jpg"
+import Candle from "./Components/Assets/Candle.jpg"
+import Recliner from "./Components/Assets/Recliner.jpg"
+import BarStools from "./Components/Assets/BarStools.jpg"
+import Dresser from "./Components/Assets/Dresser.jpg"
+import CoffeeTable from "./Components/Assets/CoffeeTable.jpg"
+import OfficeChair from "./Components/Assets/OfficeChair.jpg"
+
 
 const createTables = async () => {
   const SQL = `
@@ -77,7 +103,7 @@ const seedTable = async () => {
       description: "INSIGNIA 32-inch Class F20 Series Smart HD 720p Fire TV with Alexa Voice Remote (NS-32F201NA23, 2022 Model)",          
       prod_category: "Electronics",
       inventory: 25,
-      image: "",
+      image: {tv},
       price: 130
      }),
      createProduct({
@@ -85,7 +111,7 @@ const seedTable = async () => {
       description: "SAMSUNG Galaxy S24 Cell Phone, 128GB AI Smartphone, Unlocked Android, 50MP Camera, Fastest Processor, Long Battery Life, US Version, 2024, Onyx Black, SM-S921UZKAXAA)",          
       prod_category: "Electronics",
       inventory: 50,
-      image: "",
+      image: {phone},
       price: 800
      }),
      createProduct({
@@ -93,7 +119,7 @@ const seedTable = async () => {
       description: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones with Spatial Audio, Over-the-Ear Headphones with Mic, Up to 24 Hours of Battery Life, Black",          
       prod_category: "Electronics",
       inventory: 40,
-      image: "",
+      image: {headphones},
       price: 430
      }),
      createProduct({
@@ -101,7 +127,7 @@ const seedTable = async () => {
       description: "HP 17 Inch Laptop Computer, 17.3 FHD Business Laptop, Intel Core i3-N305(8-Core), 32GB RAM, 1TB SSD, Intel UHD Graphics, Fingerprint, WiFi 6, Thin and Light Laptop, Win 11 Home, with Stand",                   
       prod_category: "Electronics",
       inventory: 15,
-      image: "",
+      image: {laptop},
       price: 680
      }),
      createProduct({
@@ -109,7 +135,7 @@ const seedTable = async () => {
       description: "Apple Watch Series 9 [GPS 45mm] Smartwatch with Midnight Aluminum Case with Midnight Sport Band S/M. Fitness Tracker, ECG Apps, Always-On Retina Display, Water Resistant",          
       prod_category: "Electronics",
       inventory: 45,
-      image: "",
+      image: {appleWatch},
       price: 350
      }),
      // Clothing
@@ -118,7 +144,7 @@ const seedTable = async () => {
       description: "Levi's Men's Washed Cotton Hooded Military Jacket (Regular & Big & Tall Sizes)",          
       prod_category: "Clothing",
       inventory: 45,
-      image: "",
+      image: {MensJacket},
       price: 72
      }),
      createProduct({
@@ -126,7 +152,7 @@ const seedTable = async () => {
       description: "Wrangler Authentics Men's Regular Fit Comfort Flex Waist Jean",          
       prod_category: "Clothing",
       inventory: 100,
-      image: "",
+      image: {MensJeans},
       price: 35
      }),
      createProduct({
@@ -134,7 +160,7 @@ const seedTable = async () => {
       description: "Hey Dude Mens Wally L Stretch Shoes",          
       prod_category: "Clothing",
       inventory: 35,
-      image: "",
+      image: {HDShoes},
       price: 60
      }),
      createProduct({
@@ -142,7 +168,7 @@ const seedTable = async () => {
       description: "Levi's Women's Low Pro Jeans",          
       prod_category: "Clothing",
       inventory: 30,
-      image: "",
+      image: {WomensJeans},
       price: 75
      }),
      createProduct({
@@ -150,7 +176,7 @@ const seedTable = async () => {
       description: "Crocs Womens Brooklyn Low Wedges, Platform Sandals",          
       prod_category: "Clothing",
       inventory: 20,
-      image: "",
+      image: {Crocs},
       price: 50
      }),
      // PersonalCare
@@ -159,7 +185,7 @@ const seedTable = async () => {
        description: "Olaplex No. 4 Bond Maintenance Shampoo",          
        prod_category: "PersonalCare",
        inventory: 100,
-       image: "",
+       image: {Shampoo},
        price: 30
       }),
      createProduct({
@@ -167,7 +193,7 @@ const seedTable = async () => {
        description: "Paulas Choice--SKIN PERFECTING 2% BHA Liquid Salicylic Acid Exfoliant--Facial Exfoliant for Blackheads, Enlarged Pores, Wrinkles & Fine Lines, 4 oz Bottle",          
        prod_category: "PersonalCare",
        inventory: 80,
-       image: "",
+       image: {PCExfoliant},
        price: 35
       }),
      createProduct({
@@ -175,7 +201,7 @@ const seedTable = async () => {
        description: "Dr. Squatch Men's Bar Soap Gift Set (10 Bars) – Men's Natural Bar Soap - Birchwood Breeze, Fresh Falls, Wood Barrel Bourbon, Coconut Castaway, Cedar Citrus, Bay Rum Soap, and more",          
        prod_category: "PersonalCare",
        inventory: 75,
-       image: "",
+       image: {DrSquatchSoap},
        price: 63
       }),
      createProduct({
@@ -183,7 +209,7 @@ const seedTable = async () => {
        description: "Old Spice Antiperspirant Deodorant for Men, Harbor Scent, 48 Hr Odor Protection, 2.6 oz (Pack of 3)",          
        prod_category: "PersonalCare",
        inventory: 60,
-       image: "",
+       image: {OldSpice},
        price: 25
       }),
      createProduct({
@@ -191,7 +217,7 @@ const seedTable = async () => {
        description: "Clinique SPF 50 Mineral Sunscreen Fluid For Face",          
        prod_category: "PersonalCare",
        inventory: 90,
-       image: "",
+       image: {Sunscreen},
        price: 35
       }),
       // HomeDecor 
@@ -200,7 +226,7 @@ const seedTable = async () => {
        description: "Sweetcrispy Arched Full Length Mirror 64x21 Full Body Mirror Floor Mirror Standing Hanging or Leaning Wall, Large Arch Wall Mirror with Stand Aluminum Alloy Thin Frame",          
        prod_category: "HomeDecor",
        inventory: 20,
-       image: "",
+       image: {ArchedMirror},
        price: 50
       }),
       createProduct({
@@ -208,7 +234,7 @@ const seedTable = async () => {
        description: "JONATHAN Y MOH101B-8 Moroccan Hype Boho Vintage Diamond 8 ft. x 10 ft. Area-Rug, Bohemian, Southwestern, Casual, Transitional, Pet Friendly, Non Shedding, Stain Resistant, Easy-Cleaning, Cream/Gray",
        prod_category: "HomeDecor",
        inventory: 10,
-       image: "",
+       image: {Rug},
        price: 100
       }),
       createProduct({
@@ -216,7 +242,7 @@ const seedTable = async () => {
        description: "InSimSea Framed Vintage Landscape Canvas Wall Art | Wild Field Oil Painting Prints | Cottagecore Bedroom Bathroom Office Decor 24x36inch",          
        prod_category: "HomeDecor",
        inventory: 20,
-       image: "",
+       image: {FrameArt},
        price: 65
       }),
       createProduct({
@@ -224,7 +250,7 @@ const seedTable = async () => {
        description: "Glass Bud Vase Set of 22, Small Vases for Flowers, Clear Centerpieces, Mini in Bulk Rustic Wedding Decorations, Vintage Look Home Table Flower Decor",          
        prod_category: "HomeDecor",
        inventory: 15,
-       image: "",
+       image: {VaseSet},
        price: 40
       }),
       createProduct({
@@ -232,7 +258,7 @@ const seedTable = async () => {
        description: "Sprig by Kohler Recharge Aromatherapy Candle with Bergamot and Lemongrass, 100% Natural Soy-Coconut Wax, Uplifting and Invigorating Scent, Gift for Holidays, 8 oz",          
        prod_category: "HomeDecor",
        inventory: 50,
-       image: "",
+       image: {Candle},
        price: 38
       }),
       //Furniture
@@ -241,7 +267,7 @@ const seedTable = async () => {
        description: "Yaheetech Modern Fabric Recliner Chair Sofa Adjustable Single Sofa with Thicker Seat Cushion and Backrest for Living Room Home Theater, Beige",          
        prod_category: "Furniture",
        inventory: 20,
-       image: "",
+       image: {Recliner},
        price: 70
       }),
       createProduct({
@@ -249,7 +275,7 @@ const seedTable = async () => {
        description: "Homall Bar Stools Modern PU Leather Adjustable Swivel Barstools, Armless Hydraulic Kitchen Counter Bar Stool Synthetic Leather Extra Height Square Island Barstool with Back Set of 2(Black)",          
        prod_category: "Furniture",
        inventory: 25,
-       image: "",
+       image: {BarStools},
        price: 75
       }),
       createProduct({
@@ -257,7 +283,7 @@ const seedTable = async () => {
        description: "9 Drawer Dresser with LED Light, Tall Fabric Chest of Drawers for Closet, Storage Tower with 3 Shelves, Wide Drawer Organizer Cabinet with Power Outlets for Bedroom, Living Room (Rustic Brown)",          
        prod_category: "Furniture",
        inventory: 10,
-       image: "",
+       image: {Dresser},
        price: 90
       }),
       createProduct({
@@ -265,7 +291,7 @@ const seedTable = async () => {
        description: "WLIVE Wood Lift Top Coffee Table with Hidden Compartment and Adjustable Storage Shelf, Lift Tabletop Dining Table for Home Living Room, Office, Rustic Oak",          
        prod_category: "Furniture",
        inventory: 35,
-       image: "",
+       image: {CoffeeTable},
        price: 90
       }),
       createProduct({
@@ -273,7 +299,7 @@ const seedTable = async () => {
        description: "Home Office Chair Ergonomic Desk Chair Mesh Computer Chair with Lumbar Support Armrest Executive Rolling Swivel Adjustable Mid Back Task Chair for Women Adults, Black",          
        prod_category: "Furniture",
        inventory: 35,
-       image: "",
+       image: {OfficeChair},
        price: 35
       }),
   ]);

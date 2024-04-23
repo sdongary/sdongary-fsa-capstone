@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "../main";
+
+const API_URL = 'http://localhost:3000/api';
 
 export default function SingleCategory() {
   const [categoryProducts, setCategoryProducts] = useState([]);

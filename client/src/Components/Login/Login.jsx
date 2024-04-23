@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../main";
+
+const API_URL = 'http://localhost:3000/api';
 
 export default function Login({user, setUser, token, setToken}){
 
@@ -72,12 +73,12 @@ export default function Login({user, setUser, token, setToken}){
             </label>
             <button disabled={!email || !password}>Login</button>
           </form>
-          <p>Forget password?</p>
+          <p>Forgot password?</p>
           <button onClick={() => navigate("/forgotpassword")}>
             Reset Password
           </button>
           <p>Don't have an account?</p>
-          <button onClick={() => navigate("/register")}>Register</button>
+          <button onClick={() => navigate("/register")}>Create Account</button>
         </div>
       ) : (
         <div>

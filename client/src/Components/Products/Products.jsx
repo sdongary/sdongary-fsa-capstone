@@ -1,24 +1,22 @@
 import { useEffect, useState } from "react"
-import { API_URL } from "../../main"
 import { useNavigate } from "react-router-dom";
 import Categories from "../Categories/Categories";
 
-
+const API_URL = 'http://localhost:3000/api';
 
 export default function Products(){
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('')
+  
 
 useEffect(() => {
   const fetchProducts = async () => {
-    try {
+    
       const response = await fetch(`${API_URL}/products`);
       const result = await response.json();
       setProducts(result)
-    } catch (error){
-      console.log(error);
-    }
+    
   };
   fetchProducts();
 },[]);
@@ -44,7 +42,7 @@ return (
       <ul className="products">
       {products.filter((product) => 
       product.name.toLowercase()
-      .match(search.toLocaleLowerCase())).map((product) => {
+      .match(search.toLowerCase())).map((product) => {
         return (
           <li key={product.id} className="product">
             <h3>{product.name}</h3>

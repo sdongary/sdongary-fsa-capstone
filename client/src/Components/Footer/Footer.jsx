@@ -5,16 +5,15 @@ import twitterx_icon from '../Assets/twitterx_icon.png'
 import facebook_icon from '../Assets/facebook_icon.png'
 import snapchat_icon from '../Assets/snapchat_icon.png'
 
-const Footer = () => {
+export default function Footer() {
   return(
     <div className='footer'>
       <div className='footer-logo'>
         <img src={footer_logo} alt="" />
-        <p>SHOPPER</p>
+        <p>ShoppersStop</p>
       </div>
       <ul className='footer-links'>
         <li>Company</li>
-        <li>Products</li>
         <li>Offices</li>
         <li>About Us</li>
         <li>Contact</li>
@@ -42,4 +41,3 @@ const Footer = () => {
   )
 }
 
-export default Footer

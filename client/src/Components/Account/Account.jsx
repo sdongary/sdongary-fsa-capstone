@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../main";
 import {useNavigate} from "react-router-dom";
+
+const API_URL = 'http://localhost:3000/api';
 
 export default function Account({ token, setToken}){
   const navigate = useNavigate();

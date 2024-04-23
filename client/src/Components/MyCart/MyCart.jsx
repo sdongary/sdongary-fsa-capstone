@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../main";
+
+const API_URL = 'http://localhost:3000/api';
 
 export default function MyCart({ token }) {
     const [cartItems, setCartItems] = useState([]);    
@@ -16,7 +17,7 @@ export default function MyCart({ token }) {
                 }
               });
               const result = await response.json();
-              fetchCartItems(result);
+              setCartItems(result);
               
           } catch (error) {
               console.log(error);

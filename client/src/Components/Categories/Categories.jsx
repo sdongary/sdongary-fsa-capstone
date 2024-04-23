@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../main";
 import { useNavigate} from "react-router-dom"
+
+const API_URL = 'http://localhost:3000/api';
 
 export default function Categories(){
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ export default function Categories(){
   return (
   <>
   <ul className="category">
-  {categories.map((category) => {
+  {categories.
+  map((category) => {
     return (
       <li key={category.id} className="category">
         <h3>{category.name.toUpperCase()}</h3>

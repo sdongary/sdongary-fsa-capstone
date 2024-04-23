@@ -21,10 +21,6 @@ app.get('/', (req, res)=> res.sendFile(path.join(__dirname, '../client/dist/inde
 app.use('/assets', express.static(path.join(__dirname, '../client/dist/assets'))); 
 
 
-// app.use((err, req, res, next)=> {
-//   console.log(err);
-//   res.status(err.status || 500).send({ error: err.message ? err.message : err });
-// });
 
 app.use(cors());
 app.use('/api/auth', usersRouter);

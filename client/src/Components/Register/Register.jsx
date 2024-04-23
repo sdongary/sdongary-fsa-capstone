@@ -1,14 +1,17 @@
 import { useState } from "react";
-import {API_URL} from "../../main";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 
-export function Register ({ user, setUser, token, setToken })  {
+
+const API_URL = 'http://localhost:3000/api';
+
+export default function Register ({ user, setUser, token, setToken })  {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  
+  const navigate = useNavigate();
   
 const submit = event => {
   event.preventDefault();
@@ -85,7 +88,7 @@ const register = async (credentials) => {
             Register
           </button>
         </form>
-        <p>If you have an existing account, Please log In</p>
+        <p>Already have an account?</p>
         <button onClick={() => navigate("/login")}>Log In</button>
       </div>
     )}

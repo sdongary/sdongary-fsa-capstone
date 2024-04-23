@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URL } from "../../main";
 
-export function SingleProduct({token}){
+const API_URL = 'http://localhost:3000/api';
+
+export default function SingleProduct({token}){
   const [ product, setProduct] = useState({});
   const [ successMessage, setSuccessMessage ] = useState("");
   const [ error, setError ] = useState("");

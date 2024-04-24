@@ -64,8 +64,7 @@ return (
             </li>
           </ul>
           <button onClick={() => navigate("/myCart")}>My Cart</button>
-          <button>My Orders</button>
-          <button onClick={() => navigate("/UserSettings")}>User Settings</button>
+          <button>My Orders</button>          
           <button onClick={() => { deleteUser(); navigateHome() }}>Delete User</button>
           <button onClick={() => { logout(); navigateHome() }}>Logout</button>
         </>

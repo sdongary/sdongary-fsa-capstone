@@ -25,12 +25,12 @@ function App() {
   return (
     <>
     
-    <h1 className="logo">
+    {/* <h1 className="logo">
       <img
       src={logo}
       alt="ShopersStop logo" />
       ShoppersStop
-    </h1>
+    </h1> */}
     <div id="container">
       <Navigation token={token} />
       <div id="main section">

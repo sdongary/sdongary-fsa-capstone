@@ -41,7 +41,7 @@ return (
   </div>
       <ul className="products">
       {products.filter((product) => 
-       product?.name?.toLowerCase()
+       product.name.toLowerCase()
       .match(search.toLowerCase())).map((product) => {
         return (
           <li key={product.id} className="product">

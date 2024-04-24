@@ -39,11 +39,11 @@ const init = async()=> {
   await client.connect();
   console.log('connected to database');
 
-  // await createTables();
-  // console.log('tables created');
+  await createTables();
+  console.log('tables created');
 
-  // await seedTable();
-  // console.log('data seeded');
+  await seedTable();
+  console.log('data seeded');
 
   const port = process.env.PORT || 3000;
   app.listen(port, ()=> console.log(`listening on port ${port}`));

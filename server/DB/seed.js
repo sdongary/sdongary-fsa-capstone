@@ -86,7 +86,7 @@ const seedTable = async () => {
       description: "SAMSUNG Galaxy S24 Cell Phone, 128GB AI Smartphone, Unlocked Android, 50MP Camera, Fastest Processor, Long Battery Life, US Version, 2024, Onyx Black, SM-S921UZKAXAA)",          
       prod_category: "Electronics",
       inventory: 50,
-     image:"",
+     image:"https://m.media-amazon.com/images/I/71Ua9NgQgWL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
       price: 800
      }),
      createProduct({
@@ -94,7 +94,7 @@ const seedTable = async () => {
       description: "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones with Spatial Audio, Over-the-Ear Headphones with Mic, Up to 24 Hours of Battery Life, Black",          
       prod_category: "Electronics",
       inventory: 40,
-     image:"",
+     image:"https://m.media-amazon.com/images/I/51NC9ErIQtL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
       price: 430
      }),
      createProduct({
@@ -102,7 +102,7 @@ const seedTable = async () => {
       description: "HP 17 Inch Laptop Computer, 17.3 FHD Business Laptop, Intel Core i3-N305(8-Core), 32GB RAM, 1TB SSD, Intel UHD Graphics, Fingerprint, WiFi 6, Thin and Light Laptop, Win 11 Home, with Stand",                   
       prod_category: "Electronics",
       inventory: 15,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/71p5FKT9FQL.__AC_SY300_SX300_QL70_FMwebp_.jpg",
       price: 680
      }),
      createProduct({
@@ -110,7 +110,7 @@ const seedTable = async () => {
       description: "Apple Watch Series 9 [GPS 45mm] Smartwatch with Midnight Aluminum Case with Midnight Sport Band S/M. Fitness Tracker, ECG Apps, Always-On Retina Display, Water Resistant",          
       prod_category: "Electronics",
       inventory: 45,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/71OSc6IfGcL.__AC_SY445_SX342_QL70_FMwebp_.jpg",
       price: 350
      }),
      // Clothing
@@ -119,7 +119,7 @@ const seedTable = async () => {
       description: "Levi's Men's Washed Cotton Hooded Military Jacket (Regular & Big & Tall Sizes)",          
       prod_category: "Clothing",
       inventory: 45,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/71ZrUomEVsL._AC_UL480_FMwebp_QL65_.jpg",
       price: 72
      }),
      createProduct({
@@ -127,7 +127,7 @@ const seedTable = async () => {
       description: "Wrangler Authentics Men's Regular Fit Comfort Flex Waist Jean",          
       prod_category: "Clothing",
       inventory: 100,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/71lqr18zk4L._AC_UL480_FMwebp_QL65_.jpg",
       price: 35
      }),
      createProduct({
@@ -135,7 +135,7 @@ const seedTable = async () => {
       description: "Hey Dude Mens Wally L Stretch Shoes",          
       prod_category: "Clothing",
       inventory: 35,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/71OaI6-qt3L._AC_UL480_FMwebp_QL65_.jpg",
       price: 60
      }),
      createProduct({
@@ -143,7 +143,7 @@ const seedTable = async () => {
       description: "Levi's Women's Low Pro Jeans",          
       prod_category: "Clothing",
       inventory: 30,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/81mejcsxxbL._AC_UL480_FMwebp_QL65_.jpg",
       price: 75
      }),
      createProduct({
@@ -151,7 +151,7 @@ const seedTable = async () => {
       description: "Crocs Womens Brooklyn Low Wedges, Platform Sandals",          
       prod_category: "Clothing",
       inventory: 20,
-     image: "",
+     image: "https://m.media-amazon.com/images/I/61W7eSVrqRL._AC_SX695_.jpg",
       price: 50
      }),
      // PersonalCare
@@ -160,7 +160,7 @@ const seedTable = async () => {
        description: "Olaplex No. 4 Bond Maintenance Shampoo",          
        prod_category: "PersonalCare",
        inventory: 100,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/61W7eSVrqRL._AC_UL480_FMwebp_QL65_.jpg",
        price: 30
       }),
      createProduct({
@@ -168,15 +168,15 @@ const seedTable = async () => {
        description: "Paulas Choice--SKIN PERFECTING 2% BHA Liquid Salicylic Acid Exfoliant--Facial Exfoliant for Blackheads, Enlarged Pores, Wrinkles & Fine Lines, 4 oz Bottle",          
        prod_category: "PersonalCare",
        inventory: 80,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/61bLRVPWH7L._AC_UL480_FMwebp_QL65_.jpg",
        price: 35
       }),
      createProduct({
        name: "Dr. Squatch Men's Bar Soap",
-       description: "Dr. Squatch Men's Bar Soap Gift Set (10 Bars) – Men's Natural Bar Soap - Birchwood Breeze, Fresh Falls, Wood Barrel Bourbon, Coconut Castaway, Cedar Citrus, Bay Rum Soap, and more",          
+       description: "Dr. Squatch Men's Bar Soap Gift Set (10 Bars) Men's Natural Bar Soap - Birchwood Breeze, Fresh Falls, Wood Barrel Bourbon, Coconut Castaway, Cedar Citrus, Bay Rum Soap, and more",          
        prod_category: "PersonalCare",
        inventory: 75,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/81CCqT8eJKL._AC_UL480_FMwebp_QL65_.jpg",
        price: 63
       }),
      createProduct({
@@ -184,7 +184,7 @@ const seedTable = async () => {
        description: "Old Spice Antiperspirant Deodorant for Men, Harbor Scent, 48 Hr Odor Protection, 2.6 oz (Pack of 3)",          
        prod_category: "PersonalCare",
        inventory: 60,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71uOfpFBliL._AC_UL480_FMwebp_QL65_.jpg",
        price: 25
       }),
      createProduct({
@@ -192,7 +192,7 @@ const seedTable = async () => {
        description: "Clinique SPF 50 Mineral Sunscreen Fluid For Face",          
        prod_category: "PersonalCare",
        inventory: 90,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/31nJH1RZI3L._SY445_SX342_QL70_FMwebp_.jpg",
        price: 35
       }),
       // HomeDecor 
@@ -201,7 +201,7 @@ const seedTable = async () => {
        description: "Sweetcrispy Arched Full Length Mirror 64x21 Full Body Mirror Floor Mirror Standing Hanging or Leaning Wall, Large Arch Wall Mirror with Stand Aluminum Alloy Thin Frame",          
        prod_category: "HomeDecor",
        inventory: 20,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/81cf8NeCT7L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
        price: 50
       }),
       createProduct({
@@ -209,7 +209,7 @@ const seedTable = async () => {
        description: "JONATHAN Y MOH101B-8 Moroccan Hype Boho Vintage Diamond 8 ft. x 10 ft. Area-Rug, Bohemian, Southwestern, Casual, Transitional, Pet Friendly, Non Shedding, Stain Resistant, Easy-Cleaning, Cream/Gray",
        prod_category: "HomeDecor",
        inventory: 10,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/81cf8NeCT7L._AC_UL480_FMwebp_QL65_.jpg",
        price: 100
       }),
       createProduct({
@@ -217,7 +217,7 @@ const seedTable = async () => {
        description: "InSimSea Framed Vintage Landscape Canvas Wall Art | Wild Field Oil Painting Prints | Cottagecore Bedroom Bathroom Office Decor 24x36inch",          
        prod_category: "HomeDecor",
        inventory: 20,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/81-iVFGABEL._AC_UL480_FMwebp_QL65_.jpg",
        price: 65
       }),
       createProduct({
@@ -225,7 +225,7 @@ const seedTable = async () => {
        description: "Glass Bud Vase Set of 22, Small Vases for Flowers, Clear Centerpieces, Mini in Bulk Rustic Wedding Decorations, Vintage Look Home Table Flower Decor",          
        prod_category: "HomeDecor",
        inventory: 15,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71sx3UXbh7L._AC_UL480_FMwebp_QL65_.jpg",
        price: 40
       }),
       createProduct({
@@ -233,7 +233,7 @@ const seedTable = async () => {
        description: "Sprig by Kohler Recharge Aromatherapy Candle with Bergamot and Lemongrass, 100% Natural Soy-Coconut Wax, Uplifting and Invigorating Scent, Gift for Holidays, 8 oz",          
        prod_category: "HomeDecor",
        inventory: 50,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/61ucZpkc6-L._AC_UL480_FMwebp_QL65_.jpg",
        price: 38
       }),
       //Furniture
@@ -242,7 +242,7 @@ const seedTable = async () => {
        description: "Yaheetech Modern Fabric Recliner Chair Sofa Adjustable Single Sofa with Thicker Seat Cushion and Backrest for Living Room Home Theater, Beige",          
        prod_category: "Furniture",
        inventory: 20,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/91WaKMv0pWL._AC_UL480_FMwebp_QL65_.jpg",
        price: 70
       }),
       createProduct({
@@ -250,7 +250,7 @@ const seedTable = async () => {
        description: "Homall Bar Stools Modern PU Leather Adjustable Swivel Barstools, Armless Hydraulic Kitchen Counter Bar Stool Synthetic Leather Extra Height Square Island Barstool with Back Set of 2(Black)",          
        prod_category: "Furniture",
        inventory: 25,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/61vjgfkBi1L._AC_UL480_FMwebp_QL65_.jpg",
        price: 75
       }),
       createProduct({
@@ -258,7 +258,7 @@ const seedTable = async () => {
        description: "9 Drawer Dresser with LED Light, Tall Fabric Chest of Drawers for Closet, Storage Tower with 3 Shelves, Wide Drawer Organizer Cabinet with Power Outlets for Bedroom, Living Room (Rustic Brown)",          
        prod_category: "Furniture",
        inventory: 10,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/91VQiL0BzYL._AC_UL480_FMwebp_QL65_.jpg",
        price: 90
       }),
       createProduct({
@@ -266,7 +266,7 @@ const seedTable = async () => {
        description: "WLIVE Wood Lift Top Coffee Table with Hidden Compartment and Adjustable Storage Shelf, Lift Tabletop Dining Table for Home Living Room, Office, Rustic Oak",          
        prod_category: "Furniture",
        inventory: 35,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/81xhCy8yQ6L._AC_UL480_FMwebp_QL65_.jpg",
        price: 90
       }),
       createProduct({
@@ -274,7 +274,7 @@ const seedTable = async () => {
        description: "Home Office Chair Ergonomic Desk Chair Mesh Computer Chair with Lumbar Support Armrest Executive Rolling Swivel Adjustable Mid Back Task Chair for Women Adults, Black",          
        prod_category: "Furniture",
        inventory: 35,
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Rhi0USPxL._AC_UL480_FMwebp_QL65_.jpg",
        price: 35
       }),
   ]);

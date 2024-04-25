@@ -160,7 +160,7 @@ const seedTable = async () => {
        description: "Olaplex No. 4 Bond Maintenance Shampoo",          
        prod_category: "PersonalCare",
        inventory: 100,
-      image: "https://m.media-amazon.com/images/I/61W7eSVrqRL._AC_UL480_FMwebp_QL65_.jpg",
+      image: "https://m.media-amazon.com/images/I/619RKxrcrdL._AC_UL480_FMwebp_QL65_.jpg",
        price: 30
       }),
      createProduct({

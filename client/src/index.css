@@ -41,6 +41,10 @@ body {
 .nav{
   margin: 100px;
   text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+
 }
 
 ul {
@@ -58,6 +62,8 @@ li {
 
 .category {
   display: flex;
+  font-size: medium;
+  font-weight: lighter;
 }
 
 .form {
@@ -98,8 +104,8 @@ p {
 }
 
 img {
-  width: 100px;
-  height: auto;
+  width: 200px;
+  height: 200px;
 }
 
 .search-bar {

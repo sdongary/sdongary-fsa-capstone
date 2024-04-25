@@ -13,7 +13,7 @@ import SingleProduct from "./Components/SingleProduct/SingleProduct";
 import SingleCategory from "./Components/SingleCategory/SingleCategory";
 import MyCart from "./Components/MyCart/MyCart";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-import logo from "./Components/Assets/logo.png"
+
 
 
 
@@ -25,12 +25,6 @@ function App() {
   return (
     <>
     
-    {/* <h1 className="logo">
-      <img
-      src={logo}
-      alt="ShopersStop logo" />
-      ShoppersStop
-    </h1> */}
     <div id="container">
       <Navigation token={token} />
       <div id="main section">
